@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027173451) do
+ActiveRecord::Schema.define(version: 20171027185636) do
+
+  create_table "orderlines", force: :cascade do |t|
+    t.integer  "quantity"
+    t.float    "cost"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "fname"
