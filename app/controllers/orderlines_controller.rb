@@ -69,6 +69,6 @@ class OrderlinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def orderline_params
-      params.require(:orderline).permit(:quantity, :cost, :comment)
+      params.require(:orderline).permit(:idfood, :idorder, :quantity, :cost, :comment)
     end
 end

@@ -5,6 +5,8 @@
 <table>
   <thead>
     <tr>
+      <th>Idfood</th>
+      <th>Idorder</th>
       <th>Quantity</th>
       <th>Cost</th>
       <th>Comment</th>
@@ -15,6 +17,8 @@
   <tbody>
     <% @orderlines.each do |orderline| %>
       <tr>
+        <td><%= orderline.idfood %></td>
+        <td><%= orderline.idorder %></td>
         <td><%= orderline.quantity %></td>
         <td><%= orderline.cost %></td>
         <td><%= orderline.comment %></td>

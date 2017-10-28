@@ -11,9 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027185636) do
+ActiveRecord::Schema.define(version: 20171028142008) do
 
   create_table "orderlines", force: :cascade do |t|
+    t.integer  "idfood"
+    t.integer  "idorder"
     t.integer  "quantity"
     t.float    "cost"
     t.text     "comment"

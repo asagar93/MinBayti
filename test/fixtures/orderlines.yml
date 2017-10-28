@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  idfood: 1
+  idorder: 1
   quantity: 1
   cost: 1.5
   comment: MyText
 
 two:
+  idfood: 1
+  idorder: 1
   quantity: 1
   cost: 1.5
   comment: MyText
