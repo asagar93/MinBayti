@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028151637) do
+ActiveRecord::Schema.define(version: 20171028172224) do
 
   create_table "bussinesses", force: :cascade do |t|
-    t.integer  "iduser"
+    t.integer  "user_id"
     t.string   "name"
     t.float    "ratings"
     t.text     "reviews"
@@ -31,15 +31,15 @@ ActiveRecord::Schema.define(version: 20171028151637) do
   end
 
   create_table "foods", force: :cascade do |t|
-    t.integer  "idcategory"
+    t.integer  "category_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "orderlines", force: :cascade do |t|
-    t.integer  "idfood"
-    t.integer  "idorder"
+    t.integer  "food_id"
+    t.integer  "order_id"
     t.integer  "quantity"
     t.float    "cost"
     t.text     "comment"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20171028151637) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "iduser"
+    t.integer  "user_id"
     t.boolean  "payment_method"
     t.date     "date_created"
     t.date     "date_delivered"
