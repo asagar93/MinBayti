@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Iduser:</strong>
+  <%= @bussiness.iduser %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bussiness.name %>
+</p>
+
+<p>
+  <strong>Ratings:</strong>
+  <%= @bussiness.ratings %>
+</p>
+
+<p>
+  <strong>Reviews:</strong>
+  <%= @bussiness.reviews %>
+</p>
+
+<p>
+  <strong>Photos:</strong>
+  <%= @bussiness.photos %>
+</p>
+
+<p>
+  <strong>Instalink:</strong>
+  <%= @bussiness.instalink %>
+</p>
+
+<%= link_to 'Edit', edit_bussiness_path(@bussiness) %> |
+<%= link_to 'Back', bussinesses_path %>

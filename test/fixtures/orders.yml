@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  iduser: 1
+  payment_method: false
+  date_created: 2017-10-28
+  date_delivered: 2017-10-28
+  date_paid: 2017-10-28
+
+two:
+  iduser: 1
+  payment_method: false
+  date_created: 2017-10-28
+  date_delivered: 2017-10-28
+  date_paid: 2017-10-28

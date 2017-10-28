@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  iduser: 1
+  name: MyString
+  ratings: 1.5
+  reviews: MyText
+  photos: 
+  instalink: MyString
+
+two:
+  iduser: 1
+  name: MyString
+  ratings: 1.5
+  reviews: MyText
+  photos: 
+  instalink: MyString

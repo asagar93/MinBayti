@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bussinesses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Iduser</th>
+      <th>Name</th>
+      <th>Ratings</th>
+      <th>Reviews</th>
+      <th>Photos</th>
+      <th>Instalink</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bussinesses.each do |bussiness| %>
+      <tr>
+        <td><%= bussiness.iduser %></td>
+        <td><%= bussiness.name %></td>
+        <td><%= bussiness.ratings %></td>
+        <td><%= bussiness.reviews %></td>
+        <td><%= bussiness.photos %></td>
+        <td><%= bussiness.instalink %></td>
+        <td><%= link_to 'Show', bussiness %></td>
+        <td><%= link_to 'Edit', edit_bussiness_path(bussiness) %></td>
+        <td><%= link_to 'Destroy', bussiness, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bussiness', new_bussiness_path %>

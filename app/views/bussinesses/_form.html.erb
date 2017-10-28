@@ -1,0 +1,41 @@
+<%= form_for(@bussiness) do |f| %>
+  <% if @bussiness.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bussiness.errors.count, "error") %> prohibited this bussiness from being saved:</h2>
+
+      <ul>
+      <% @bussiness.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :iduser %><br>
+    <%= f.number_field :iduser %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :ratings %><br>
+    <%= f.text_field :ratings %>
+  </div>
+  <div class="field">
+    <%= f.label :reviews %><br>
+    <%= f.text_area :reviews %>
+  </div>
+  <div class="field">
+    <%= f.label :photos %><br>
+    <%= f.text_field :photos %>
+  </div>
+  <div class="field">
+    <%= f.label :instalink %><br>
+    <%= f.text_field :instalink %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
