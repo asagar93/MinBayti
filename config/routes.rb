@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'about/index'
+
   resources :categories
   resources :foods
   resources :bussinesses
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   get 'home/index'
   root :to => "home#index"
   get '/bussinesses' => "bussinesses#index"
+  get '/about' => "about#index"
 
 
 
