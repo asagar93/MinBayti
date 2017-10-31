@@ -2,10 +2,10 @@
 
 <h1>Listing Foods</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Idcategory</th>
+      <th>Category</th>
       <th>Name</th>
       <th colspan="3"></th>
     </tr>
@@ -14,7 +14,7 @@
   <tbody>
     <% @foods.each do |food| %>
       <tr>
-        <td><%= food.idcategory %></td>
+        <td><%= food.category.name %></td>
         <td><%= food.name %></td>
         <td><%= link_to 'Show', food %></td>
         <td><%= link_to 'Edit', edit_food_path(food) %></td>
