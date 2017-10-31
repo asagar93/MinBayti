@@ -1,2 +1,60 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width = device width, initial-scale = 1">
+
+<title>Min Bayti</title>
+<link rel="stylesheet" type="text/css" href="maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<style>
+.jumbotron{
+	background-color:transparent !important;
+	width: 600px;
+	font-weight: bold;
+	text-align: center;
+	margin-left: 280px;
+	margin-top: 150px;
+	color:black;
+}
+.tab-content{
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 10px;
+}
+.nav-tabs {
+	margin-bottom:0;
+}
+body{
+	background-image:url("/assets/food.jpg");
+	background-size: cover;
+	;
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+
+<div class="jumbotron">
+<p><font size="50">Welcome To Min Bayti</font></p>
+<p>
+MinBayti is a platform designed for you to browse, order, and enjoy home-made food from all around Qatar 
+</p>
+<p>
+<a class="btn btn-danger btn-lg" role="button">Sign up Now!</a>
+<%= link_to 'View All Home Businesses', bussinesses_path, :class=>"btn btn-danger btn-lg" %>
+</p>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+</script>
+
+</body>
+</html>

@@ -2,11 +2,11 @@
 
 <h1>Listing Orderlines</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Idfood</th>
-      <th>Idorder</th>
+      <th>Food ID</th>
+      <th>Order ID</th>
       <th>Quantity</th>
       <th>Cost</th>
       <th>Comment</th>
@@ -17,8 +17,8 @@
   <tbody>
     <% @orderlines.each do |orderline| %>
       <tr>
-        <td><%= orderline.idfood %></td>
-        <td><%= orderline.idorder %></td>
+        <td><%= orderline.food_id %></td>
+        <td><%= orderline.order_id %></td>
         <td><%= orderline.quantity %></td>
         <td><%= orderline.cost %></td>
         <td><%= orderline.comment %></td>

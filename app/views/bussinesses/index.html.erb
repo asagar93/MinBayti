@@ -2,10 +2,9 @@
 
 <h1>Listing Bussinesses</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>UserID</th>
       <th>Name</th>
       <th>Ratings</th>
       <th>Reviews</th>
@@ -18,7 +17,7 @@
   <tbody>
     <% @bussinesses.each do |bussiness| %>
       <tr>
-        <td><%= bussiness.user_id %></td>
+
         <td><%= bussiness.name %></td>
         <td><%= bussiness.ratings %></td>
         <td><%= bussiness.reviews %></td>

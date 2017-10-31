@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030190034) do
+ActiveRecord::Schema.define(version: 20171031191159) do
 
   create_table "bussinesses", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
     t.float    "ratings"
     t.text     "reviews"
-    t.binary   "photos"
+    t.string   "photos",     default: "--- []\n"
     t.string   "instalink"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "categories", force: :cascade do |t|
