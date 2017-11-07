@@ -19,6 +19,9 @@
   <div class="field">
 	<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "Select Category" %>
   </div>
+  <div class="field">
+	<%= f.collection_select :bussiness_id, Bussiness.all, :id, :name, :prompt => "Select Business" %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
