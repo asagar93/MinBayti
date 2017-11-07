@@ -5,7 +5,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.2'
 # Use sqlite3 as the database for Active Record
 
-gem 'pg'
+group :development, :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 
