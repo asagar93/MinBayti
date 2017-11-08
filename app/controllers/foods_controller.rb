@@ -20,7 +20,10 @@ class FoodsController < ApplicationController
   # GET /foods/1/edit
   def edit
   end
-
+  
+  def byBusiness
+       @food = Food.byBusiness(session[:business_id])
+  end
   # POST /foods
   # POST /foods.json
   def create

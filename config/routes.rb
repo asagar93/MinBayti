@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sessions
   get 'about/index'
 
   resources :categories
@@ -11,6 +12,15 @@ Rails.application.routes.draw do
   root :to => "home#index"
   get '/bussinesses' => "bussinesses#index"
   get '/about' => "about#index"
+  get 'Login' => 'session#new', as: :login
+  post 'Login' => 'session#create'
+  get 'SignUp' => 'users#new', as: :signup
+  post 'SignUp' => 'session#create'
+  get 'edit_user' => 'users#show', as: :show
+  get 'session/new' => 'users#new'
+  post 'session/new' => 'users#create' 
+  delete 'visitors/index' => 'session#destroy', as: :logout
+
 
 
 
