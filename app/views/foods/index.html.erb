@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Foods</h1>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -9,8 +10,15 @@
 	  <th>Business</th>
       <th colspan="3"></th>
     </tr>
+<%= form_tag foods_path, :method => 'get' do %>
+  <%= collection_select :food, :category_id, Category.all, :id, :name, prompt: true %>
+  <%= submit_tag "Filter by Category" %>
+<% end %>
+<%= form_tag foods_path, :method => 'get' do %>
+  <%= collection_select :food, :bussiness_id, Bussiness.all, :id, :name, prompt: true %>
+  <%= submit_tag "Filter by Business" %>
+<% end %>
   </thead>
-
   <tbody>
     <% @foods.each do |food| %>
       <tr>

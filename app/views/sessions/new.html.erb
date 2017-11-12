@@ -1,4 +1,4 @@
-<%= simple_form_for(:sessions) do |f| %>
+<%= simple_form_for :sessions, :url => {:action => "create"} do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
       <%= f.input :email %>
@@ -8,3 +8,5 @@
       <%= f.button :submit, "Login" %>
     </div>
   <% end %>
+  
+  

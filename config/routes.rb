@@ -8,17 +8,17 @@ Rails.application.routes.draw do
   resources :orders
   resources :orderlines
   resources :users
+  
   get 'home/index'
   root :to => "home#index"
   get '/bussinesses' => "bussinesses#index"
   get '/about' => "about#index"
-  get 'Login' => 'session#new', as: :login
-  post 'Login' => 'session#create'
+  get 'Login' => 'sessions#new', as: :login
   get 'SignUp' => 'users#new', as: :signup
-  post 'SignUp' => 'session#create'
+  post 'SignUp' => 'users#create'
   get 'edit_user' => 'users#show', as: :show
-  get 'session/new' => 'users#new'
-  post 'session/new' => 'users#create' 
+  
+
   delete 'visitors/index' => 'session#destroy', as: :logout
 
 

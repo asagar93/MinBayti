@@ -4,7 +4,13 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.json
   def index
-    @foods = Food.all
+    if params[:food] and params[:food][:category_id]
+      @foods = Food.search(params[:food][:category_id])
+    elsif params[:food] and params[:food][:bussiness_id]
+      @foods = Food.search2(params[:food][:bussiness_id])
+    else
+      @foods = Food.all
+    end
   end
 
   # GET /foods/1
@@ -20,10 +26,7 @@ class FoodsController < ApplicationController
   # GET /foods/1/edit
   def edit
   end
-  
-  def byBusiness
-       @food = Food.byBusiness(session[:business_id])
-  end
+
   # POST /foods
   # POST /foods.json
   def create

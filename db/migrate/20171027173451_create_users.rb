@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :points
       t.integer :nooforders
       t.string :email
+      t.string :password
       t.date :dob
       t.string :gender
       t.integer :phone
