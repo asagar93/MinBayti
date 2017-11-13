@@ -25,9 +25,11 @@
         <td><%= food.category.name %></td>
         <td><%= food.name %></td>
 		<td><%= food.bussiness.name %></td>
+		<%if logged_in? && current_user.admin?%>
         <td><%= link_to 'Show', food %></td>
         <td><%= link_to 'Edit', edit_food_path(food) %></td>
         <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<%end%>
       </tr>
     <% end %>
   </tbody>

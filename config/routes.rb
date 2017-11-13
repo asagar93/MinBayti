@@ -17,11 +17,13 @@ Rails.application.routes.draw do
   get 'SignUp' => 'users#new', as: :signup
   post 'SignUp' => 'users#create'
   get 'edit_user' => 'users#show', as: :show
-  
+
 
   delete 'visitors/index' => 'sessions#destroy', as: :logout
 
-
+  resources :users do
+        get :make_admin, on: :member
+  end
 
 
   

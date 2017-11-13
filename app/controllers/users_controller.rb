@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :make_admin]
+  skip_before_action :authenticate, only: [:new, :create]
+  before_action :admin_only, only: [:index, :make_admin]
 
   # GET /users
   # GET /users.json
@@ -61,12 +64,46 @@ class UsersController < ApplicationController
     end
   end
 
+  def make_admin
+        @user.toggle!(:admin)
+        if @user.save
+          redirect_to users_path, notice: 'User was
+      successfully updated.'
+        else
+          flash[:alert]= 'Error updating user'
+          redirect_to users_path
+        end 
+  end
+  
+  private 
+  
+      def admin_only
+        if !current_user.admin?
+          redirect_to root_path
+        end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
+      if params[:id]!=nil
        @user = User.find(params[:id])
-           
+           if @user == current_user || current_user.admin?
+             return @user
+           else
+             redirect_to root_path
+           end
+      else
+        @user = User.find(session[:user_id])
+        if @user == current_user || current_user.admin?
+          return @user
+        else
+          redirect_to root_path
+        end
+      end
     end
+ 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

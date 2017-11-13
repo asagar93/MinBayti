@@ -1,7 +1,49 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width = device width, initial-scale = 1">
+
+<title>Min Bayti</title>
+
+<body>
 <p id="notice"><%= notice %></p>
+<style>
+@font-face {
+font-family: 'Billabong';
+font-style: normal;
+font-weight: normal;
+src: local('Billabong'), url('Billabong.woff') format('woff');
+}
+img {
+	height:200px;
+	width:200px;
+}
+#hamad{
+	margin-bottom: 20px;
+	text-align: justify;
+	line-height: 1.5;
+}
+.page-header {
+	margin-left: 20px;
+	color:#ffffff;
+	text-align: center;
+	font-family: Billabong;
+}
+body{
+	background-image:url("/assets/businesses.jpeg");
+	background-size: cover;
+	;
+}
 
+</style>
+</head>
+
+<div class="page-header">
 <h1>Instagram Businesses</h1>
-
+</div>
 <table class="table table-striped">
   <thead>
    
@@ -9,29 +51,154 @@
 
   <tbody>
     <div class="container">
-     <div class="row no-gutter">
+     <div class="row no-gutters">
     <% @bussinesses.each do |bussiness| %>
       <tr>
 
-	       <div class="col-lg-3"> 
-	       <img src=<%= bussiness.photos %> class="img-responsive" alt="Responsive image">
-		   <h4>Name:  <%= bussiness.name %></h4>
-		   <h4>Rating:  <%= bussiness.ratings %></h4>
-		   <h4>Review:  <%= bussiness.reviews %></h4>
-		   <h4>Instalink:  <%= bussiness.instalink %></h4>
-		   <h4>description:  <%=bussiness.description%></h4>
-
+	       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6" id="hamad"> 
+	       <div class="media" id="hamad">	  <div class="media-left" id="hamad">
+	       <img src=<%= bussiness.photos %> class="media-object">
 	       </div>
-			
-		
+	       <div class="media-body" id="hamad">
+		   <h4 class="media-heading"><%= bussiness.name %></h4>
+		   Rating:  <%= bussiness.ratings %> <br>
+		   Description:  <%=bussiness.description%><br>
+		   Review:  <%= bussiness.reviews %><br>
+		   Instalink:  <%= bussiness.instalink %>
+		   
+		   </div>
+
+	       
+			</div>
+			</div>
        
       </tr>
     <% end %>
 
  </div>
+ 
   </tbody>
 </table>
-
 <br>
 
+
+
 <%= link_to 'New Bussiness', new_bussiness_path %>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Min Bayti Businesses</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/assets/stylesheets/3-col-portfolio.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+body{
+	margin-top: 5%;
+	background-image:url("/assets/businesses.jpeg");
+	background-size: cover;
+	;
+}
+#s {
+	font-color:black;
+}
+</style>
+</head>
+
+<body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Home Businesses
+                    <small id="s">in Qatar</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+        <% @bussinesses.each do |bussiness| %>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive img-rounded" src=<%= bussiness.photos %> alt="">
+                </a>
+                <h3>
+                    <a href="#"><%=bussiness.name%> <small><%=bussiness.ratings%></small></a>
+                </h3>
+                <p>Description: <%=bussiness.description%></p>
+            </div>
+            <%end%>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Pagination -->
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="assets/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/bootstrap.min.js"></script>
+
+</body>
+
+</html>
