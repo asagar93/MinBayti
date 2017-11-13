@@ -1,6 +1,24 @@
+
+  
+
 <%= simple_form_for :sessions, :url => {:action => "create"} do |f| %>
     <%= f.error_notification %>
-    <div class="form-inputs">
+
+					
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pr-wrap">
+                <div class="pass-reset">
+                    <label>
+                        Enter the email you signed up with</label>
+                    <input type="email" placeholder="Email" />
+                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                </div>
+            </div>
+            <div class="wrap">
+                
+                <    <div class="form-group">
       <%= f.input :email %>
       <%= f.input :password %>
 </div>
@@ -8,5 +26,21 @@
       <%= f.button :submit, "Login" %>
     </div>
   <% end %>
-  
-  
+               
+                </form>
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+
+
+
+
+
+
+
+
+
+	

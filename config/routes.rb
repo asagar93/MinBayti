@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'edit_user' => 'users#show', as: :show
   
 
-  delete 'visitors/index' => 'session#destroy', as: :logout
+  delete 'visitors/index' => 'sessions#destroy', as: :logout
 
 
 
