@@ -9,7 +9,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
+  gem 'pg' , '~> 0.20.0'
 end
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
