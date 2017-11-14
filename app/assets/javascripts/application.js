@@ -19,5 +19,5 @@
 //= require_tree .
 //= require grayscale.js
 //= require grayscale.min.js
-//= require bootstrap.min.js
+//= require jquery
 
