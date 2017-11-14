@@ -5,7 +5,7 @@ class CreateBussinesses < ActiveRecord::Migration
       t.string :name
       t.float :ratings
       t.text :reviews
-      t.binary :photos
+      t.string :photos
       t.string :instalink
 
       t.timestamps null: false
