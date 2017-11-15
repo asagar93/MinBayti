@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :sessions
   
-
+  
   resources :categories
   resources :foods
   resources :bussinesses
@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   resources :orderlines
   resources :users
   
+  resources :bussinesses do
+      collection do
+        get 'search'
+      end
+      resources :reviews
+    end
+    
   get 'home/index'
   root :to => "home#index"
   get '/bussinesses' => "bussinesses#index"

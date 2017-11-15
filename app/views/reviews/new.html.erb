@@ -2,9 +2,37 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', reviews_path %>-->
+<%= link_to 'Back', reviews_path %>
+-->
+<style>
+body{
+	margin-top: 4%;
 
+	background-image: url(/assets/dark.jpeg);
 
+}
+#submity{
+	margin-top: 20px;
+
+}
+.text{
+	color:black;
+
+}
+.col-sm-10{
+	color:black;
+}
+
+</style>
+<body>
+<div class="row">
+<div class="col-lg-12">
+	<h1 class="page-header">Write a Review
+  	  <small id="s">your opinion matters</small>
+    </h1>
+</div>
+</div>
+<div class="container">
 <%= form_for([@bussiness, @review]) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -17,26 +45,32 @@
     </div>
   <% end %>
   <div class="form-group row">
-    <%= f.label :rating, class: 'col-sm-2 form-control-label' %>
-    <div class="col-sm-6">
-      <%= f.number_field :rating %>
+    <%= f.label :rating, class: 'col-sm-4 form-control-label' %>
+    <div class="col-sm-10">
+      <%= f.number_field :rating, class: 'text' %>
     </div>
   </div>
   <div class="form-group row">
-    <%= f.label :comment, class: 'col-sm-2 form-control-label' %>
-    <div class="col-sm-6">
-      <%= f.text_area :comment, class: 'form-control' %>
-  </div>
-  <div class="form-group row">
-    <%= f.select :bussiness_id, class: 'col-sm-2 form-control-label' %>
-    <div class="col-sm-6">
-      <%= f.text_area :comment, class: 'form-control' %>
-  </div>
-  <br/>
-  <div class="form-group row">
+    <%= f.label :comment, class: 'col-sm-4 form-control-label' %>
     <div class="col-sm-10">
-      <%= f.submit 'Submit', class: 'btn btn-primary' %>
-      <%= link_to "Back", bussinesses_path, class: "btn btn-secondary" %>
+      <%= f.text_area :comment , class: 'text' %>
+    </div>
+  </div>
+
+ <div class="form-group row">
+    <%= f.label :Business, class: 'col-sm-4 form-control-label' %>
+    <div class="col-sm-10">
+  	<%= f.collection_select :bussiness_id, Bussiness.order(:name),:id,:name, include_blank: true%>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <div class="col-sm-10" id="submity">
+      <%= f.submit 'Submit Your Opinion', class: 'btn btn-default' %>
+      <%= link_to "Back", bussinesses_path, class: "btn btn-default" %>
     </div>
   </div>
 <% end %>
+</div>
+<body>
