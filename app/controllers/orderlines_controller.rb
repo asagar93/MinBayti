@@ -1,5 +1,6 @@
 class OrderlinesController < ApplicationController
   before_action :set_orderline, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only
 
   # GET /orderlines
   # GET /orderlines.json
@@ -60,7 +61,13 @@ class OrderlinesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  private 
+  
+    def admin_only
+      if !current_user.admin?
+        redirect_to root_path
+      end
+    end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_orderline

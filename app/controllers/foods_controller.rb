@@ -1,6 +1,7 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: [:show, :edit, :update, :destroy]
 
+
   # GET /foods
   # GET /foods.json
   def index
@@ -66,6 +67,16 @@ class FoodsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private 
+  
+    def admin_only
+      if !current_user.admin?
+        redirect_to root_path
+      end
+    end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

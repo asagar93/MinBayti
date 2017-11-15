@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy, :make_admin]
-  skip_before_action :authenticate, only: [:new, :create]
+  skip_before_action only: [:new, :create]
   before_action :admin_only, only: [:index, :make_admin]
 
   # GET /users
@@ -89,7 +89,7 @@ class UsersController < ApplicationController
     def set_user
       if params[:id]!=nil
        @user = User.find(params[:id])
-           if @user == current_user || current_user.admin?
+           if @user == current_user 
              return @user
            else
              redirect_to root_path
@@ -107,6 +107,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:fname, :lname, :password,:password_confirmation,:type, :points, :nooforders, :email, :dob, :gender, :phone, :address, :tokens)
+      params.require(:user).permit(:fname, :lname, :password,:password_confirmation,:type, :points, :nooforders, :email, :dob, :gender, :phone, :address, :tokens,:admin)
     end
 end

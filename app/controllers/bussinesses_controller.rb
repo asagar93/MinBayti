@@ -60,6 +60,14 @@ class BussinessesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private 
+  
+    def admin_only
+      if !current_user.admin?
+        redirect_to root_path
+      end
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.

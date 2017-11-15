@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only
 
   # GET /orders
   # GET /orders.json
@@ -60,7 +61,14 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  private 
+  
+    def admin_only
+      if !current_user.admin?
+        redirect_to root_path
+      end
+    end
+    
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order

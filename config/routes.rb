@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :sessions
-  get 'about/index'
+  
 
   resources :categories
   resources :foods
