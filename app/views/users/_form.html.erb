@@ -11,7 +11,11 @@
       </ul>
     </div>
   <% end %>
-
+<style>
+	body{
+		background-image: url(/assets/food.jpg);
+	}
+	</style>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -19,58 +23,46 @@
             </div>
             <div class="wrap">
 
-					<div class="field">
+					<div>
 					<input type="text" placeholder="First Name" <%= f.text_field :fname %>
 	
 				  </div>
-				  <div class="field">
+				  <div>
 
 				    <input type="text" placeholder="Last Name" <%= f.text_field :lname %>
 				  </div>
-				  <div class="field">
 
-				    <input type="text" placeholder="Kind" <%= f.number_field :kind %>
-				  </div>
-				  <div class="field">
 
-				    <input type="text" placeholder="Points" <%= f.number_field :points %>
-				  </div>
-				  <div class="field">
-
-				    <input type="text" placeholder="Number of Orders" <%= f.number_field :nooforders %>
-				  </div>
-				  <div class="field">
+				  <div>
 
 				    <input type="text" placeholder="Email" <%= f.text_field :email %>
 				  </div>
-				 <div class="field">
+				 <div>
 
 				  	 <input type="password" placeholder="Password" <%= f.password_field :password %>
 				</div>
-				 <div class="field">
+				 <div>
 
 				  	 <input type="password" placeholder="Confirm Password" <%= f.password_field :password_confirmation %>
 				</div>
-				  <div class="field">
+				  <div>
 
 				    <%= f.date_select :dob %>
 				  </div>
-				  <div class="field">
+				  <div>
 
 				    <input type="text" placeholder="Gender" <%= f.text_field :gender %>
 				  </div>
-				  <div class="field">
+				  <div>
 
 				    <input type="text" placeholder="Phone Number" <%= f.number_field :phone %>
 				  </div>
-				  <div class="field">
+				  <div>
 
 				    <input type="text" placeholder="Address" <%= f.text_field :address %>
 				  </div>
-				  <div class="field">
 
-				    <input type="text" placeholder="Tokens" <%= f.number_field :tokens %>
-				  </div>
+
 				  <div class="actions">
 				    <input type="submit" value="Sign Up" class="btn btn-success btn-sm" <%= f.submit %>
 				  </div>
