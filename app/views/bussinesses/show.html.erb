@@ -62,16 +62,16 @@
               <tr>
                 <td><strong>Reviews</strong></td>
                 <td><% if @reviews.blank? %>
-            No reviews just yet, would you like to add the first!
-            <%= link_to "Write Review", new_bussiness_review_path(@bussiness), class: "btn btn-default btn-sm" %>
-          <% else %>
-            <% @reviews.each do |review| %>
+           		 		No reviews just yet, would you like to add the first!
+        				<%= link_to "Write Review", new_bussiness_review_path(@bussiness), class: "btn btn-default btn-sm" %>
+         			   <% else %>
+           				<% @reviews.each do |review| %>
               <div class="reviews">
                 <div class="star-rating" data-score= <%= review.rating %> ></div>
                 <p><%= review.comment %></p>
               </div>
-            <% end %>
-          <% end %></td>
+       		 		<% end %>
+         		   	<% end %></td>
               </tr>
               <tr>
                 <td><strong>Instalink:</strong></td>

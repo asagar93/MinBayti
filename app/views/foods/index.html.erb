@@ -12,13 +12,27 @@
     </tr>
 <%= form_tag foods_path, :method => 'get' do %>
   <%= collection_select :food, :category_id, Category.all, :id, :name, prompt: true %>
-  <%= submit_tag "Filter by Category" %>
+  <%= submit_tag "Filter by Category" , :class=> "text"%>
 <% end %>
 <%= form_tag foods_path, :method => 'get' do %>
-  <%= collection_select :food, :bussiness_id, Bussiness.all, :id, :name, prompt: true %>
-  <%= submit_tag "Filter by Business" %>
+  <%= collection_select :food, :bussiness_id, Bussiness.all, :id, :name, prompt: true, :class=> "text" %>
+  <%= submit_tag "Filter by Business" , :class=> "text" %>
 <% end %>
   </thead>
+  <<style>
+  	body{
+  			background-image: url(/assets/dark.jpeg);
+			padding:50px;
+  	}
+	.table{
+		color:black;
+		background-color:white;
+	}
+	.text{
+		color:black;
+		
+	}
+	</style>
   <tbody>
     <% @foods.each do |food| %>
       <tr>
