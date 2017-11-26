@@ -5,7 +5,8 @@
 <table>
   <thead>
     <tr>
-		
+	  <th>Name</th>
+	  <th>Business</th>
       <th>Rating</th>
       <th>Comment</th>
 	  
@@ -16,7 +17,8 @@
   <tbody>
     <% @reviews.each do |review| %>
       <tr>
-		 
+		<td><%= review.user.fname %></td>
+		<td><%= review.bussiness.name %></td>
         <td><%= review.rating %></td>
         <td><%= review.comment %></td>
         <td><%= link_to 'Show', review %></td>

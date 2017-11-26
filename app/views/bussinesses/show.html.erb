@@ -8,7 +8,7 @@
 
 <p>
   <strong>Ratings:</strong>
-  <%= @bussiness.ratings %>
+
 </p>
 
 <p>
@@ -18,7 +18,7 @@
 
 <p>
   <strong>Photos:</strong>
-  <%= @bussiness.photos %>
+  <%= @bussiness.imgs %>
 </p>
 
 <p>
@@ -46,7 +46,7 @@
 <body>
 <p id="notice"><%= notice %></p>
 <div class="container" id="profile">
-        <%= image_tag(@bussiness.photos, :size => "350x200") %>
+        <%= image_tag(@bussiness.imgs, :size => "350x200") %>
 
         <div class="table-responsive">
           <table class="table">
@@ -79,7 +79,7 @@
               </tr>
               <tr>
                 <td><strong>Rating:</strong></td>
-                <td><%= @bussiness.ratings %></td>
+                <td></td>
               </tr>
             </tbody>
           </table>

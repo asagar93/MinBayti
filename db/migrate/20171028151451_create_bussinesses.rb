@@ -1,11 +1,11 @@
 class CreateBussinesses < ActiveRecord::Migration
   def change
     create_table :bussinesses do |t|
-      t.integer :iduser
+      t.integer :user_id
       t.string :name
       t.float :ratings
       t.text :reviews
-      t.string :photos
+      t.string :imgs
       t.string :instalink
 
       t.timestamps null: false

@@ -42,7 +42,10 @@
 		<%if logged_in? && current_user.admin?%>
         <td><%= link_to 'Show', food %></td>
         <td><%= link_to 'Edit', edit_food_path(food) %></td>
+		<td><%= link_to 'Add to Cart', orders_path %></td>
         <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<%elsif logged_in?%>
+        <td><%= link_to 'Add to Cart', orders_path %></td>
 		<%end%>
       </tr>
     <% end %>

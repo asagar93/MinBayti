@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_one :bussiness
   has_many :orders
+  has_many :reviews
   has_secure_password
   
   validates :fname, :lname,:password,:password_confirmation,  presence: true
@@ -16,5 +17,6 @@ class User < ActiveRecord::Base
 
   
   validates :password, length: { minimum: 6 }
+  
 
 end

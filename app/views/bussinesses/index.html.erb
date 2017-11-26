@@ -61,7 +61,7 @@ body{
 	       </div>
 	       <div class="media-body" id="hamad">
 		   <h4 class="media-heading"><%= bussiness.name %></h4>
-		   Rating:  <%= bussiness.ratings %> <br>
+
 		   Description:  <%=bussiness.description%><br>
 		   Review:  <%= bussiness.reviews %><br>
 		   Instalink:  <%= bussiness.instalink %>
@@ -169,9 +169,9 @@ a:hover{
         <div class="row">
         <% @bussinesses.each do |bussiness| %>
             <div class="col-md-4 portfolio-item">
-                <%=link_to( image_tag(bussiness.photos, :size => "350x200"), bussiness)%>
+                <%=link_to( image_tag(bussiness.imgs, :size => "350x200"), bussiness)%>
                 <h3>
-                    <%= link_to bussiness.name, bussiness, :class=>"btn btn-default btn-md" %> <small><%=bussiness.ratings%></small>
+                    <%= link_to bussiness.name, bussiness, :class=>"btn btn-default btn-md" %> 
                 </h3>
                 <p id="forP">Description: <%=bussiness.description%></p>
             </div>
