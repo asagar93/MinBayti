@@ -1,3 +1,5 @@
 class Orderline < ActiveRecord::Base
-  belongs_to :order
+  has_one :order
+  belongs_to :confirmed_order
+  belongs_to :food
 end

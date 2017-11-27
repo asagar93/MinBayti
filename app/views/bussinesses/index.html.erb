@@ -172,7 +172,12 @@ a:hover{
                 <%=link_to( image_tag(bussiness.imgs, :size => "350x200"), bussiness)%>
                 <h3>
                     <%= link_to bussiness.name, bussiness, :class=>"btn btn-default btn-md" %> 
-                </h3>
+			    <%if !Review.where("bussiness_id like ?", bussiness.id).average(:rating).blank? %>
+					<small><%=Review.where("bussiness_id like ?",bussiness.id).average(:rating).round(2)%></small>
+			    <%end%>
+				
+				
+				</h3>
                 <p id="forP">Description: <%=bussiness.description%></p>
             </div>
             <%end%>

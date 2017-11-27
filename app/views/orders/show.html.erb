@@ -1,29 +1,56 @@
 <p id="notice"><%= notice %></p>
 
+<style>
+    body{
+        background-image: url(/assets/dark.jpeg);
+      padding:50px;
+    }
+  .table{
+    color:black;
+    background-color:white;
+  }
+  .text{
+    color:black;
+  }
+
+  </style>
 <p>
-  <strong>Name:</strong>
-  <%= @order.user.fname %>
+  <strong>Orderer: </strong>
+  <%= current_user.fname + " " + current_user.lname %>
+</p>
+<p>
+  <strong>Payment method:</strong><br>
+  
 </p>
 
-<p>
-  <strong>Payment method:</strong>
-  <%= @order.payment_method %>
-</p>
+<h2>Ordered Food List</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Food Name</th>
+      <th>Food Business</th>
+      <th>Food Category</th>
+      <th>Qty.</th>
+      <th>Special Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.orderlines.each do |item| %>
+      <tr>
+      <td><%= item.food.name %></td>
+      <td><%= item.food.bussiness.name %></td>
+      <td><%= item.food.category.name %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.comment %></td>
+      <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <%end%>
+  </tbody>
 
-<p>
-  <strong>Date created:</strong>
-  <%= @order.date_created %>
-</p>
+</table>
+<%= button_to 'Empty Cart', @order, method: :delete, confirm: "Are you sure?" %>
 
-<p>
-  <strong>Date delivered:</strong>
-  <%= @order.date_delivered %>
-</p>
 
-<p>
-  <strong>Date paid:</strong>
-  <%= @order.date_paid %>
-</p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

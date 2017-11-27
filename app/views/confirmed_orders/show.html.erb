@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @confirmed_order.user_id %>
+</p>
+
+<p>
+  <strong>Payment method:</strong>
+  <%= @confirmed_order.payment_method %>
+</p>
+
+<p>
+  <strong>Payment status:</strong>
+  <%= @confirmed_order.payment_status %>
+</p>
+
+<%= link_to 'Edit', edit_confirmed_order_path(@confirmed_order) %> |
+<%= link_to 'Back', confirmed_orders_path %>

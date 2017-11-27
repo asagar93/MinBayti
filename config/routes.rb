@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :confirmed_orders
   resources :photos
   resources :reviews
   resources :sessions

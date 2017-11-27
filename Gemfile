@@ -6,20 +6,15 @@ gem 'rails', '4.2.8'
 # Use sqlite3 as the database for Active Record
 
 gem 'web-console', group: :development
-
-group :development, :test do
-  gem 'byebug'
+gem "sqlite3"
+gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'sqlite3'
-end
-group :production do
-  gem 'pg' , '~> 0.20.0'
-  gem 'rails_12factor'
-end
+gem 'spring'
+
+
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 

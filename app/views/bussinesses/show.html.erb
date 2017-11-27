@@ -79,7 +79,7 @@
               </tr>
               <tr>
                 <td><strong>Rating:</strong></td>
-                <td></td>
+     		   		<td><%=Review.where("bussiness_id like ?", @bussiness.id).average(:rating)%></td>
               </tr>
             </tbody>
           </table>

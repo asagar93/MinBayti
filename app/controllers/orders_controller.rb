@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
+    @order.user_id = session[:user_id]
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -55,12 +55,31 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-      format.json { head :no_content }
+    @order = current_order
+    @confirmed_order = ConfirmedOrder.new
+    @confirmed_order.user_id = current_user.id
+    @confirmed_order.payment_method = "Cash"
+    @confirmed_order.payment_status = "Not paid yet."
+    @confirmed_order.save
+    @orderlines = Orderline.where("order_id like ?", current_order.id) 
+    @orderlines.each do |orderline|
+      orderline.order_id = @confirmed_order.id
+      orderline.save
     end
+
+    session[:order_id] = nil
+    respond_to do |format|
+      if @confirmed_order.save
+        format.html { redirect_to foods_path, notice: 'Your order was successfully placed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :new }
+        format.json { render json: @confirmed_order.errors, status: :unprocessable_entity }
+      end
+    end
+    
   end
+  
   private 
   
     def admin_only

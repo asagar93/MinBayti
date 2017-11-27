@@ -25,11 +25,15 @@ class OrderlinesController < ApplicationController
   # POST /orderlines
   # POST /orderlines.json
   def create
-    @orderline = Orderline.new(orderline_params)
+    @order = current_order
+    food = Food.find(params[:food_id])
+    @orderline = @order.orderlines.build(food: food)
+    @orderline.quantity = params[:quantity]
+    @orderline.comment = params[:comment]
 
     respond_to do |format|
       if @orderline.save
-        format.html { redirect_to @orderline, notice: 'Orderline was successfully created.' }
+        format.html { redirect_to foods_path, notice: 'Your choice was successfully added to your cart' }
         format.json { render :show, status: :created, location: @orderline }
       else
         format.html { render :new }
@@ -76,6 +80,6 @@ class OrderlinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def orderline_params
-      params.require(:orderline).permit(:idfood, :idorder, :quantity, :cost, :comment)
+      params.require(:orderline).permit(:idfood, :idorder, :quantity, :comment)
     end
 end
