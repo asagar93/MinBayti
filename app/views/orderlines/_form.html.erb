@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :food_id %><br>
-    <%= f.number_field :food_id %>
+  <%= f.hidden_field :food_id, :value => @orderline.food_id%>
   </div>
+  
   <div class="field">
-    <%= f.label :order_id %><br>
-    <%= f.number_field :order_id %>
+
+  <%= f.hidden_field :order_id, :value => @orderline.order_id%>
   </div>
+  
   <div class="field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>
   </div>
-  <div class="field">
-    <%= f.label :cost %><br>
-    <%= f.text_field :cost %>
-  </div>
+
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
   </div>
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit%>
   </div>
+  
 <% end %>

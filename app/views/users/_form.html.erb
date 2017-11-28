@@ -39,8 +39,15 @@
 
 				    <input type="text" placeholder="Last Name" <%= f.text_field :lname %>
 				  </div>
-
-
+				  <%if current_user.admin?%>
+				  <div>
+					Customer <%= f.radio_button :kind, value: 1 %> 
+					Business Owner <%= f.radio_button :kind, value: 2%> 
+	
+				  </div>
+				  <%else%>
+				  <% f.hidden_field :kind, value: 1%>
+				  <%end%>
 				  <div>
 
 				    <input type="text" placeholder="Email" <%= f.text_field :email %>
@@ -68,8 +75,11 @@
 				  <div>
 
 				    <input type="text" placeholder="Address" <%= f.text_field :address %>
+				    <% f.hidden_field :tokens, :value=> 0%>
+				  <% f.hidden_field :points, :value=> 0%>
+				  <% f.hidden_field :nooforders, :value=> 0%>
 				  </div>
-
+				  
 
 				  <div class="actions">
 				    <input type="submit" value="Sign Up" class="btn btn-success btn-sm" <%= f.submit %>

@@ -7,9 +7,8 @@
     <tr>
       <th>Category</th>
       <th>Name</th>
-	  <th>Business</th>
-    <th>Qty.</th>
-    <th>Special Comments</th>
+    <th>Business</th>
+
       <th colspan="3"></th>
     </tr>
 <%= form_tag foods_path, :method => 'get' do %>
@@ -22,37 +21,37 @@
 <% end %>
   </thead>
   <style>
-  	body{
-  			background-image: url(/assets/dark.jpeg);
-			padding:50px;
-  	}
-	.table{
-		color:black;
-		background-color:white;
-	}
-	.text{
-		color:black;
-		
-	}
-	</style>
+    body{
+        background-image: url(/assets/dark.jpeg);
+      padding:50px;
+    }
+  .table{
+    color:black;
+    background-color:white;
+  }
+  .text{
+    color:black;
+    
+  }
+  </style>
   <tbody>
     <% @foods.each do |food| %>
       <tr>
         <td><%= food.category.name %></td>
         <td><%= food.name %></td>
-		<td><%= food.bussiness.name %></td>
-    <td><%= number_field_tag :quantity1 %></td>
-    <td><%= text_field_tag :comment1 %></td>
-		<%if logged_in? && current_user.admin?%>
+    <td><%= food.bussiness.name %></td>
+    <%if logged_in? && current_user.admin?%>
         <td><%= link_to 'Show', food %></td>
         <td><%= link_to 'Edit', edit_food_path(food) %></td>
-		<td><%= button_to "Add to Cart", orderlines_path(food_id: food, quantity: :quantity1, comment: :comment1) %></td>
+    <td><%= button_to "Add to Cart", orderlines_path(food_id: food) %></td>
         <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<%elsif logged_in?%>
-        <td><%= button_to "Add to Cart", orderlines_path(food_id: food, quantity: :quantity1, comment: :comment1) %></td>
-		<%end%>
+    <%elsif logged_in?%>
+        <td><%= button_to "Add to Cart", orderlines_path(food_id: food) %></td>
+    <%end%>
       </tr>
     <% end %>
+
+
   </tbody>
 </table>
 

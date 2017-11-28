@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<!--
 <p>
   <strong>First name:</strong>
   <%= @user.fname %>
@@ -57,7 +57,140 @@
 <p>
   <strong>Admin:</strong>
   <%= @user.admin %>
-</p>
+</p>-->
+<div class="container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+           <br>
+           <br>
+           <br>
+           <br>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+        <h1 class="page-header"><%=@user.fname + " " + @user.lname%></h1>
+          <div>
+            
+            <div class="panel-body">
+              <div class="row">
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                    <%if @user.admin?%>
+                      <tr>
+                        <td>ID: </td>
+                        <td><%=@user.id%></td>
+                      </tr>
+                      <tr>
+                        <td>Kind:</td>
+                        <%if @user.kind == 1%>
+                        <td>Customer</td>
+                        <%elsif @user.kind == 2%>
+                        <td>Business Owner</td>
+                        <%else%>
+                        <td>Admin</td>
+                        <%end%>
+                      </tr>
+                    <%end%>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td><%=@user.dob%></td>
+                      </tr>
+                      <tr>
+                        <td>Gender</td>
+                        <td><%=@user.gender%></td>
+                      </tr>
+                      <tr>
+                        <td>Phone Number</td>
+                        <td><%=@user.phone%></td>
+                      </tr>
+                      <tr>
+                        <td>Home Address</td>
+                        <td><%=@user.address%></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><%=@user.email%></td>
+                      </tr>
+                      <tr>
+                        <td>Points:</td>
+                        <td><%=@user.points%></td>
+                      </tr>
+                      <tr>
+                        <td>Number of Orders:</td>
+                        <td><%=@user.nooforders%></td>
+                      </tr>
+                      <tr>
+                        <td>Redeemable Discounts:</td>
+                        <td><%=@user.tokens%></td>
+                      </tr>
+                      <%if @user.admin?%>
+                      <tr>
+                        <td>Creation Date: </td>
+                        <td><%=@user.created_at%></td>
+                      </tr>
+                      <tr>
+                        <td>Last Updated:</td>
+                        <td><%=@user.updated_at%></td>
+                      </tr>
+                    <%end%>
+                           
+                      
+                     
+                    </tbody>
+                  </table>
+                  
+                  <%= link_to 'Edit Your Account', edit_user_path(@user), class: 'btn btn-default' %>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <h1 class="page-header">Your Order History</h1>
+      <%if !ConfirmedOrder.where("user_id like ?", @user.id).blank?%>
+      <div class = "row">
+        <%ConfirmedOrder.where("user_id like ?", @user.id).each do |confirmed_order|%>
+        <div class="col-md-8 portfolio-item">
+        <%if confirmed_order.payment_method == false%>
+        <h3>By Cash</h3>
+        <%else%>
+        <h3>By Paypal </h3>
+        <%end%>
+        <p>Payment Status: <%=confirmed_order.payment_status%></p>
+        <table class="table">
+        <thead>
+          <tr>
+            <th>Food Name</th>
+            <th>Food Business</th>
+            <th>Food Category</th>
+            <th>Qty.</th>
+            <th>Special Comments</th>
+          </tr>
+        </thead>
+        <%Orderline.where("order_id like ?", confirmed_order.id).each do |orderline|%>
+          <tbody>
+            <tr>
+              <td><%= orderline.food.name %></td>
+              <td><%= orderline.food.bussiness.name %></td>
+              <td><%= orderline.food.category.name %></td>
+              <td><%= orderline.quantity %></td>
+              <td><%= orderline.comment %></td>
+            </tr>
+          </tbody>
+        <%end%>
+        </table>
+        <br>
+        <hr>
+        </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+        <%end%>
+      </div>
+      <%else%>
+        <p>You have not made any orders yet on Min Bayti :(</p>
+      <%end%>
+    </div>
+<footer>
+</footer>

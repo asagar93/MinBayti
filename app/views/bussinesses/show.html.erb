@@ -36,63 +36,107 @@
 <html lang="en">
 
 <head>
-<style>
-#profile{
-  padding-top: 50px;
-}
+  <style>
+    #profile{
+      padding-top: 50px;
+    }
 
-</style>
+  </style>
 </head>
+<div class="container">
 <body>
-<p id="notice"><%= notice %></p>
-<div class="container" id="profile">
-        <%= image_tag(@bussiness.imgs, :size => "350x200") %>
+  <p id="notice"><%= notice %></p>
+  <br><br>
+  <h1 class="page-header"><%= @bussiness.name %></h1>
+  <div class="container" id="profile">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+        <li data-target="#myCarousel" data-slide-to="5"></li>
+        <li data-target="#myCarousel" data-slide-to="6"></li>
+        <li data-target="#myCarousel" data-slide-to="7"></li>
+      </ol>
+      <div class="carousel-inner">
+      <div class="item active" align="center">
+        <%= image_tag(@bussiness.imgs, :size => "300x286", :align => "center") %>
+        </div>
+      <%@bussiness.photos.each do |photo|%>
+      <!-- Wrapper for slides -->
+      
+        <div class="item" align="center">
+        <%= image_tag(photo.path, :size => "300x286", :align => "center") %>
+        </div>
+      <%end%>
+      </div>
+      
+      
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    
 
-        <div class="table-responsive">
-          <table class="table">
-            <tbody>
-              <tr>
-                <td><strong>Name:</strong></td>
-                <td><%= @bussiness.name %></td>
-              </tr>
-              <tr>
-                <td><strong>Description:</strong></td>
-                <td><%= @bussiness.description %></td>
-              </tr>
-              <tr>
-                <td><strong>Reviews</strong></td>
-                <td><% if @reviews.blank? %>
-           		 		No reviews just yet, would you like to add the first!
-        				<%= link_to "Write Review", new_bussiness_review_path(@bussiness), class: "btn btn-default btn-sm" %>
-         			   <% else %>
-           				<% @reviews.each do |review| %>
-              <div class="reviews">
-                <div class="star-rating" data-score= <%= review.rating %> ></div>
-                <p><%= review.comment %></p>
+    <div class="table-responsive">
+      <table class="table" >
+        <tbody>
+          <tr>
+            <td><strong>Name:</strong></td>
+            <td><%= @bussiness.name %></td>
+          </tr>
+          <tr>
+            <td><strong>Description:</strong></td>
+            <td><%= @bussiness.description %></td>
+          </tr>
+          <tr>
+            <td><strong>Reviews</strong></td>
+            <td><button class="btn btn-default btn-sm" data-toggle="collapse" data-target="#demo">View Reviews</button>
+              <%= link_to "Write Review", new_bussiness_review_path(@bussiness), class: "btn btn-default btn-sm" %>
+              <div id="demo" class="collapse">
+                <table>
+                  <tr>
+                    <th>Reviewer</th>
+                    <th>Review</th>
+                  </tr>
+                  <%Review.where("bussiness_id like ?", @bussiness.id).each do |review|%>
+                  <tr>
+                    <td><%=review.user.fname + " " + review.user.lname%>: </td>
+                    <td> <%= review.comment %></td>
+                  </tr>
+                  <%end%>
+                </table>
               </div>
-       		 		<% end %>
-         		   	<% end %></td>
-              </tr>
-              <tr>
-                <td><strong>Instalink:</strong></td>
-                <td><%= @bussiness.instalink %></td>
-              </tr>
-              <tr>
-                <td><strong>Rating:</strong></td>
-     		   		<td><%=Review.where("bussiness_id like ?", @bussiness.id).average(:rating)%></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-md-7 col-md-offset-1">
-          
-        </div>
-</div>
-<div class="form-group row">
-  <div class="col-sm-10">
-    <%= link_to 'Edit', edit_bussiness_path(@bussiness), class: 'btn btn-default' %>
-      <%= link_to "Back", bussinesses_path, class: "btn btn-default" %>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Instalink:</strong></td>
+            <td><%= @bussiness.instalink %></td>
+          </tr>
+          <tr>
+            <td><strong>Rating:</strong></td>
+            <td><%=Review.where("bussiness_id like ?", @bussiness.id).average(:rating)%></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
-</div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <%= link_to 'Edit', edit_bussiness_path(@bussiness), class: 'btn btn-default' %>
+      <%= link_to "Back", bussinesses_path, class: "btn btn-default" %>
+    </div>
+  </div>
 </body>
+</div>
 </html>

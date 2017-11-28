@@ -42,13 +42,15 @@
       <td><%= item.food.category.name %></td>
       <td><%= item.quantity %></td>
       <td><%= item.comment %></td>
-      <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-default"  %></td>
+    <td><%= link_to 'Update Cart', edit_orderline_path(item.id), class: "btn-default" %></td>
     </tr>
     <%end%>
   </tbody>
 
 </table>
-<%= button_to 'Empty Cart', @order, method: :delete, confirm: "Are you sure?" %>
+<%= button_to 'Confirm Order', @order, method: :delete, confirm: "Are you sure?" %>
+
 
 
 

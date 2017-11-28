@@ -1,29 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Idfood:</strong>
-  <%= @orderline.food_id %>
+  <strong>Food:</strong>
+  <%= @orderline.food.name %>
 </p>
 
-<p>
-  <strong>Idorder:</strong>
-  <%= @orderline.order_id %>
-</p>
 
 <p>
   <strong>Quantity:</strong>
-  <%= @orderline.quantity %>
+  <%= @orderline.quantity%>
 </p>
 
-<p>
-  <strong>Cost:</strong>
-  <%= @orderline.cost %>
-</p>
 
 <p>
   <strong>Comment:</strong>
   <%= @orderline.comment %>
 </p>
 
-<%= link_to 'Edit', edit_orderline_path(@orderline) %> |
+<%= link_to 'Edit', edit_orderline_path(@orderline) %>
 <%= link_to 'Back', orderlines_path %>
