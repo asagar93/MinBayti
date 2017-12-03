@@ -1,6 +1,6 @@
 class OrderlinesController < ApplicationController
   before_action :set_orderline, only: [:show, :edit, :update, :destroy]
-  before_action :admin_only
+
 
   # GET /orderlines
   # GET /orderlines.json

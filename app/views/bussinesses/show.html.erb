@@ -1,46 +1,28 @@
-<!--<p id="notice"><%= notice %></p>
-
-
-<div class="container">
-<h1 class="page-header">
-  <%= @bussiness.name %>
-</h1>
-
-<p>
-  <strong>Ratings:</strong>
-
-</p>
-
-<p>
-  <strong>Reviews:</strong>
-  <%= @bussiness.reviews %>
-</p>
-
-<p>
-  <strong>Photos:</strong>
-  <%= @bussiness.imgs %>
-</p>
-
-<p>
-  <strong>Instalink:</strong>
-  <%= @bussiness.instalink %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @bussiness.description %>
-</p>
-</div>
-<%= link_to 'Edit', edit_bussiness_path(@bussiness) %> |
-<%= link_to 'Back', bussinesses_path %> -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <style>
-    #profile{
+<style>
+    body{
+        background-image: url(/assets/dark.jpeg);
+      padding:50px;
+}
+  .text{
+    color:black;
+  }
+  #food_item{
+    border-top:2px solid #ffffff;
+    border-right:2px solid #ffffff;
+    margin:10px;
+    padding:10px;
+    width:250px;
+  }
+  #name{
+    text-decoration: underline;
+  }
+  #profile{
       padding-top: 50px;
     }
-
   </style>
 </head>
 <div class="container">
@@ -120,20 +102,38 @@
           </tr>
           <tr>
             <td><strong>Instalink:</strong></td>
-            <td><%= @bussiness.instalink %></td>
+            <td><%=link_to( image_tag("/assets/iglogo.png", :size => "30x30"), @bussiness.instalink)%></td>
           </tr>
           <tr>
             <td><strong>Rating:</strong></td>
-            <td><%=Review.where("bussiness_id like ?", @bussiness.id).average(:rating)%></td>
+            <td><%=Review.where("bussiness_id like ?", @bussiness.id).average(:rating).round(2)%></td>
           </tr>
         </tbody>
       </table>
     </div>
-
   </div>
+  <h2>Foods from this home</h2>
+  <div class="row">
+        <% Food.where("bussiness_id like ?", @bussiness.id).each do |food| %>
+            <div class="col-md-2 portfolio-item" id="food_item">
+                <h3 id="name"><%=food.name%></h3>
+                <p>From: <%=food.bussiness.name%></p>
+                <p>Category: <%=food.category.name%></p>
+                <%if logged_in? && current_user.admin?%>
+                <%= link_to 'Show', food, :class => "btn btn-default" %>
+                <%= link_to 'Edit', edit_food_path(food), :class => "btn btn-default" %>
+                <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default" %>
+                <%= button_to "Add to Cart", orderlines_path(food_id: food), :class => "btn btn-default" %>
+            <%elsif logged_in?%>
+                <%= button_to "Add to Cart", orderlines_path(food_id: food), :class => "btn btn-default" %>
+            <%end%>
+            </div>
+            <%end%>
+  </div>
+  <br>
   <div class="form-group row">
     <div class="col-sm-10">
-      <%= link_to 'Edit', edit_bussiness_path(@bussiness), class: 'btn btn-default' %>
+
       <%= link_to "Back", bussinesses_path, class: "btn btn-default" %>
     </div>
   </div>

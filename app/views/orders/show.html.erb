@@ -13,7 +13,9 @@
     color:black;
   }
 
+
   </style>
+<div class="container">
 <p>
   <strong>Orderer: </strong>
   <%= current_user.fname + " " + current_user.lname %>
@@ -42,17 +44,17 @@
       <td><%= item.food.category.name %></td>
       <td><%= item.quantity %></td>
       <td><%= item.comment %></td>
-      <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-default"  %></td>
-    <td><%= link_to 'Update Cart', edit_orderline_path(item.id), class: "btn-default" %></td>
+      <td><%= link_to 'Remove from cart', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default text"  %></td>
+    <td><%= link_to 'Update Quantity & Comments', edit_orderline_path(item.id), class: "btn btn-default text" %></td>
     </tr>
     <%end%>
   </tbody>
 
 </table>
-<%= button_to 'Confirm Order', @order, method: :delete, confirm: "Are you sure?" %>
+<%= button_to 'Confirm Order', @order, method: :delete, confirm: "Are you sure?", :class => "btn btn-default btn-lg" %>
+</div>
 
 
 
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Edit', edit_order_path(@order), :class => "btn-default" %> |
+<%= link_to 'Back', orders_path, :class => "btn-default" %>

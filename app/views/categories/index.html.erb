@@ -1,7 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Categories</h1>
-
+<style>
+body{
+        background-image: url(/assets/dark.jpeg);
+      padding:50px;
+    }
+table{
+  color:black;
+  background-color: grey;
+}
+.text{
+  color:black;
+  border-color: black;
+}
+</style>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -14,9 +27,9 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', category, :class => "btn btn-default btn-md text" %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), :class => "btn btn-default btn-md text" %></td>
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-md text" %></td>
       </tr>
     <% end %>
   </tbody>

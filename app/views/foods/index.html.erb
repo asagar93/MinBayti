@@ -1,26 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Foods</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Name</th>
-    <th>Business</th>
-
-      <th colspan="3"></th>
-    </tr>
-<%= form_tag foods_path, :method => 'get' do %>
-  <%= collection_select :food, :category_id, Category.all, :id, :name, prompt: true %>
-  <%= submit_tag "Filter by Category" , :class=> "text"%>
-<% end %>
-<%= form_tag foods_path, :method => 'get' do %>
-  <%= collection_select :food, :bussiness_id, Bussiness.all, :id, :name, prompt: true, :class=> "text" %>
-  <%= submit_tag "Filter by Business" , :class=> "text" %>
-<% end %>
-  </thead>
-  <style>
+<style>
     body{
         background-image: url(/assets/dark.jpeg);
       padding:50px;
@@ -31,30 +10,67 @@
   }
   .text{
     color:black;
-    
+  }
+  #food_item{
+    border-top:2px solid #ffffff;
+    border-right:2px solid #ffffff;
+    margin:10px;
+    padding:10px;
+    width:250px;
+  }
+  #filters{
+    margin-bottom: 15px;
+  }
+  #alignment{
+    text-align: center;
+  }
+  #name{
+    text-decoration: underline;
   }
   </style>
-  <tbody>
-    <% @foods.each do |food| %>
-      <tr>
-        <td><%= food.category.name %></td>
-        <td><%= food.name %></td>
-    <td><%= food.bussiness.name %></td>
-    <%if logged_in? && current_user.admin?%>
-        <td><%= link_to 'Show', food %></td>
-        <td><%= link_to 'Edit', edit_food_path(food) %></td>
-    <td><%= button_to "Add to Cart", orderlines_path(food_id: food) %></td>
-        <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <%elsif logged_in?%>
-        <td><%= button_to "Add to Cart", orderlines_path(food_id: food) %></td>
-    <%end%>
-      </tr>
-    <% end %>
-
-
-  </tbody>
-</table>
+<div class="container">
+<h1 class="page-header">Home Foods</h1>
+<div class="row">
+<div class="col-md-12 portfolio-item" id="filters">
+  <%= form_tag foods_path, :method => 'get' do %>
+  <div id="alignment"><%= submit_tag "Show All Foods" , :class=> "btn btn-default btn-lg"%></div>
+<% end %>
+</div>
+<div class="col-md-4 portfolio-item" id="filters">
+  <%= form_tag foods_path, :method => 'get' do %>
+  <div id="alignment"><%= collection_select :food, :category_id, Category.all, :id, :name, prompt: true %></div><br>
+  <div id="alignment"><%= submit_tag "Filter by Category" , :class=> "btn btn-default"%></div>
+<% end %>
+</div>
+<div class="col-md-4 portfolio-item" id="filters">
+</div>
+<div class="col-md-4 portfolio-item" id="filters">
+<%= form_tag foods_path, :method => 'get' do %>
+  <div id="alignment"><%= collection_select :food, :bussiness_id, Bussiness.all, :id, :name, prompt: true%></div><br>
+  <div id="alignment"><%= submit_tag "Filter by Business" , :class=> "btn btn-default" %></div>
+<% end %>
+</div>
+</div>
+  <div class="row">
+        <% @foods.each do |food| %>
+            <div class="col-md-2 portfolio-item" id="food_item">
+                <h3 id="name"><%=food.name%></h3>
+                <p>From: <%=food.bussiness.name%></p>
+                <p>Category: <%=food.category.name%></p>
+                <%if logged_in? && current_user.admin?%>
+                <%= link_to 'Show', food, :class => "btn btn-default" %>
+                <%= link_to 'Edit', edit_food_path(food), :class => "btn btn-default" %>
+                <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default" %>
+                <%= button_to "Add to Cart", orderlines_path(food_id: food), :class => "btn btn-default" %>
+            <%elsif logged_in?%>
+                <%= button_to "Add to Cart", orderlines_path(food_id: food), :class => "btn btn-default" %>
+            <%end%>
+            </div>
+            <%end%>
+  </div>
+</div>
 
 <br>
-
-<%= link_to 'New Food', new_food_path %>
+  <%if logged_in? && current_user.admin?%>
+<%= link_to 'New Food', new_food_path, :class => "btn btn-default btn-lg" %>
+ <%end%>

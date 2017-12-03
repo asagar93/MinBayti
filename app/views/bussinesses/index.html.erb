@@ -130,7 +130,9 @@ body{
 #forP{
 	font-size:14px;
 }
-
+.text{
+    color:white;
+}
 
 
 </style>
@@ -173,7 +175,7 @@ a:hover{
                 <h3>
                     <%= link_to bussiness.name, bussiness, :class=>"btn btn-default btn-md" %> 
 			    <%if !Review.where("bussiness_id like ?", bussiness.id).average(:rating).blank? %>
-					<small><%=Review.where("bussiness_id like ?",bussiness.id).average(:rating).round(2)%></small>
+					<small class="text"><%=Review.where("bussiness_id like ?",bussiness.id).average(:rating).round(2)%></small>
 			    <%end%>
 				
 				
